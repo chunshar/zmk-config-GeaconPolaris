@@ -2,22 +2,8 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: caksoylar
-      url-base: https://github.com/caksoylar
-    - name: badjeff
-      url-base: https://github.com/badjeff
     - name: te9no
       url-base: https://github.com/te9no
-    - name: kot149
-      url-base: https://github.com/kot149
-    - name: mctechnology17
-      url-base: https://github.com/mctechnology17
-    - name: petejohanson
-      url-base: https://github.com/petejohanson
-    - name: cormoran
-      url-base: https://github.com/cormoran
-    - name: efogdev
-      url-base: https://github.com/efogdev
   projects:
     - name: zmk
       # remote: zmkfirmware
@@ -25,41 +11,52 @@ manifest:
       revision: v0.3-branch+dya
       import: app/west.yml
     - name: zmk-rgbled-widget
-      remote: caksoylar
-      revision: main
+      url: https://github.com/caksoylar/zmk-rgbled-widget
+      revision: v0.3
+      path: modules/zmk-rgbled-widget
     - name: zmk-pmw3610-driver
       # remote: badjeff
       # remote: cormoran
-      remote: efogdev
+      url: https://github.com/efogdev/zmk-pmw3610-driver
       revision: main
+      path: modules/zmk-pmw3610-driver
     - name: zmk-analog-input-driver
-      remote: badjeff
+      url: https://github.com/badjeff/zmk-analog-input-driver
       revision: main
+      path: modules/zmk-analog-input-driver
     - name: zmk-nice-oled
       # remote: mctechnology17
-      remote: te9no
+      url: https://github.com/te9no/zmk-nice-oled
       revision: main
+      path: modules/zmk-nice-oled
     - name: zmk-layout-shift
-      remote: kot149
       revision: v1
+      url: https://github.com/kot149/zmk-layout-shift
+      path: modules/zmk-layout-shift
     - name: zmk-input-processor-keybind
-      remote: te9no
       revision: main
+      url: https://github.com/te9no/zmk-input-processor-keybind
+      path: modules/zmk-input-processor-keybind
     - name: cirque-input-module
-      remote: petejohanson
       revision: main
+      url: https://github.com/petejohanson/cirque-input-module
+      path: modules/cirque-input-module
     - name: zmk-module-runtime-input-processor
-      remote: cormoran
       revision: main
+      url: https://github.com/cormoran/zmk-module-runtime-input-processor
+      path: modules/zmk-module-runtime-input-processor
     - name: zmk-module-battery-history
-      remote: cormoran
       revision: main
+      url: https://github.com/cormoran/zmk-module-battery-history
+      path: modules/zmk-module-battery-history
     - name: zmk-module-ble-management
-      remote: cormoran
       revision: main
+      url: https://github.com/cormoran/zmk-module-ble-management
+      path: modules/zmk-module-ble-management
     - name: zmk-module-settings-rpc
-      remote: cormoran
       revision: main
+      url: https://github.com/cormoran/zmk-module-settings-rpc
+      path: modules/zmk-module-settings-rpc
   self:
     path: config
     

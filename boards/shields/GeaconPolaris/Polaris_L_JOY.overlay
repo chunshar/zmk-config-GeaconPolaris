@@ -3,21 +3,6 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include <dt-bindings/zmk/keys.h>
 
-&adc {
-	status = "okay";
-};
-
-&left_encoder {
-    a-gpios = <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    b-gpios = <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    steps = <3>;
-    status = "okay";
-};
-
-&sensors {
-    triggers-per-rotation = <1>;
-};
-
 / {
     anin0: analog_input_0 {
         compatible = "zmk,analog-input";
@@ -61,4 +46,19 @@
         //     input-processors = <&zip_xy_scaler 1 16>;
         // };
     };
+};
+
+&adc {
+	status = "okay";
+};
+
+&left_encoder {
+    a-gpios = <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    b-gpios = <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    steps = <3>;
+    status = "okay";
+};
+
+&sensors {
+    triggers-per-rotation = <1>;
 };

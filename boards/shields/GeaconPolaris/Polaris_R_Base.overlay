@@ -4,10 +4,6 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include "Polaris.dtsi"
 
-&default_transform {
-    col-offset = <6>;
-};
-
 / {
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-charlieplex";
@@ -21,4 +17,8 @@
             , <&gpio1  1 (GPIO_ACTIVE_LOW)>
             ;
     };
+};
+
+&default_transform {
+    col-offset = <6>;
 };
