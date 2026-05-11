@@ -5,35 +5,37 @@
 
 / {
     anin0: analog_input_0 {
-        // compatible = "dya,analog-input";
-        compatible = "zmk,analog-input";
+        compatible = "dya,analog-input";
+        // compatible = "zmk,analog-input";
         sampling-hz = <100>;
-        // report-interval-ms = <8>;
+        report-interval-ms = <8>;
         x-ch {
-            // label = "X Axis";
+            label = "X Axis";
             io-channels = <&adc 2>;
             mv-mid = <1600>;
             mv-min-max = <1600>;
             mv-deadzone = <88>;
             scale-multiplier = <1>;
             scale-divisor = <80>;
+            output-min = <0>;
+            output-max = <24>;
             invert;
-            // response-curve = <2>;
+            response-curve = <2>;
             evt-type = <INPUT_EV_REL>;
             input-code = <INPUT_REL_X>;
         };
         y-ch {
-            // label = "Y Axis";
+            label = "Y Axis";
             io-channels = <&adc 3>;
             mv-mid = <1600>;
             mv-min-max = <1600>;
             mv-deadzone = <88>;
             scale-multiplier = <1>;
             scale-divisor = <80>;
-            // output-min = <0>;
-            // output-max = <24>;
+            output-min = <0>;
+            output-max = <24>;
             invert;
-            // response-curve = <2>;
+            response-curve = <2>;
             evt-type = <INPUT_EV_REL>;
             input-code = <INPUT_REL_Y>;
         };
@@ -44,8 +46,17 @@
         compatible = "zmk,input-listener";
         device = <&anin0>;
         
-        input-processors = <&scroll_runtime_input_processor>;
+        input-processors = <&scroll_runtime_input_processor_l>;
     };
+    
+	scroll_runtime_input_processor_l: scroll_runtime_input_processor_l {
+		compatible = "zmk,input-processor-runtime";
+        processor-label = "ScrL";
+		type = <INPUT_EV_REL>;
+		track-remainders;
+		scale-divisor = <60>;
+		#input-processor-cells = <0>;
+	};   
 };
 
 &adc {
@@ -61,4 +72,10 @@
 
 &sensors {
     triggers-per-rotation = <1>;
+};
+
+&scroll_runtime_input_processor_l {
+        x-codes = <INPUT_REL_X>;
+        y-codes = <INPUT_REL_Y>;
+        xy-to-scroll-enabled;
 };

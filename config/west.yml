@@ -9,7 +9,7 @@ manifest:
   projects:
     - name: zmk
       # remote: zmkfirmware
-      remote: cormoran
+      remote: te9no
       revision: v0.3-branch+dya
       import: app/west.yml
     - name: zmk-rgbled-widget
@@ -37,10 +37,10 @@ manifest:
       revision: main
       url: https://github.com/te9no/zmk-input-processor-keybind
       path: modules/zmk-input-processor-keybind
-    - name: cirque-input-module
-      revision: main
-      url: https://github.com/petejohanson/cirque-input-module
-      path: modules/cirque-input-module
+    # - name: cirque-input-module
+    #   revision: main
+    #   url: https://github.com/petejohanson/cirque-input-module
+    #   path: modules/cirque-input-module
     - name: zmk-module-runtime-input-processor
       revision: main
       url: https://github.com/cormoran/zmk-module-runtime-input-processor
@@ -54,14 +54,14 @@ manifest:
       url: https://github.com/cormoran/zmk-module-settings-rpc
       path: modules/zmk-module-settings-rpc
 
-    # - name: zmk-module-cirque-trackpad
-    #   revision: main
-    #   url: https://github.com/te9no/zmk-module-cirque-trackpad
-    #   path: modules/zmk-module-cirque-trackpad
-    # - name: zmk-module-analoginput-rpc
-    #   revision: main
-    #   url: https://github.com/te9no/zmk-module-analoginput-rpc
-    #   path: modules/zmk-module-analoginput-rpc
+    - name: zmk-module-cirque-trackpad
+      revision: main
+      url: https://github.com/te9no/zmk-module-cirque-trackpad
+      path: modules/zmk-module-cirque-trackpad
+    - name: zmk-module-analoginput-rpc
+      revision: main
+      url: https://github.com/te9no/zmk-module-analoginput-rpc
+      path: modules/zmk-module-analoginput-rpc
     - name: zmk-module-battery-nrf-vddh-oversampling
       revision: main
       url: https://github.com/te9no/zmk-module-battery-nrf-vddh-oversampling

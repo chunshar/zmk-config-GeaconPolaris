@@ -8,7 +8,7 @@ include:
 
   - board: seeeduino_xiao_ble
     shield: Polaris_L_Base Polaris_L_JOY rgbled_adapter nice_oled
-    snippet: zmk-usb-logging studio-rpc-usb-uart battery-nrf-vddh-oversampling
+    snippet: zmk-usb-logging studio-rpc-usb-uart
     artifact-name: Polaris_L_MODULE_JOY
 
   - board: seeeduino_xiao_ble
