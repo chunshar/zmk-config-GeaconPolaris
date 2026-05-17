@@ -82,6 +82,14 @@
         
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
                            <&mouse_runtime_input_processor>;
+
+        lowspeedmode {
+            layers = <1>, <2>;
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
+                               <&mouse_runtime_input_processor>,
+                               <&zip_xy_scaler 1 36>,
+                               <&zip_scroll_scaler 1 70>;
+        };
     };
     
 	scroll_runtime_input_processor_r: scroll_runtime_input_processor_r {
