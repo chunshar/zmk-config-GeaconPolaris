@@ -13,10 +13,6 @@ svg.physical-layout { font-family: ui-monospace, SFMono-Regular, Consolas, monos
 .module text { text-anchor: middle; dominant-baseline: middle; fill: #24434a; }
 .module .module-label { font-size: 10px; font-weight: 700; }
 .module .module-type { font-size: 7.5px; fill: #527a82; }
-.combo polyline { fill: none; stroke: #d46f2c; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; opacity: 0.92; }
-.combo .combo-dot { fill: #d46f2c; stroke: #ffffff; stroke-width: 1.2; }
-.combo .combo-label-bg { fill: #fff4df; stroke: #d46f2c; stroke-width: 1.1; }
-.combo .combo-label { font-size: 9px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; fill: #6f330f; }
 .title { font-size: 16px; font-weight: 700; text-anchor: start; dominant-baseline: hanging; fill: #1d2520; }
 .subtitle { font-size: 10px; fill: #69736c; text-anchor: start; dominant-baseline: hanging; }
 .origin { fill: #d1495b; opacity: 0.75; }
@@ -275,20 +271,6 @@ svg.physical-layout { font-family: ui-monospace, SFMono-Regular, Consolas, monos
 <rect x="0" y="0" width="52" height="26" rx="6" ry="6"/>
 <text class="tap" x="26" y="13">MO SSNIPE</text>
 </g>
-<g class="combo combo-COMBO_LANG1">
-<polyline points="134,90.605 186.52,94.245"/>
-<circle class="combo-dot" cx="134" cy="90.605" r="3.2"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<rect class="combo-label-bg" x="137.76" y="69.605" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="160.26" y="77.605">LANG1</text>
-</g>
-<g class="combo combo-COMBO_LANG2">
-<polyline points="186.52,94.245 238,102.045"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<circle class="combo-dot" cx="238" cy="102.045" r="3.2"/>
-<rect class="combo-label-bg" x="189.76" y="73.245" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="212.26" y="81.245">LANG2</text>
-</g>
 </g>
 <g class="layer layer-function_layer" transform="translate(0 396.605)">
 <text class="title" x="30" y="10">Fnc</text>
@@ -531,20 +513,6 @@ svg.physical-layout { font-family: ui-monospace, SFMono-Regular, Consolas, monos
 <g class="key keypos-55 transparent" transform="translate(82 272.605) rotate(0 -52 -260)">
 <rect x="0" y="0" width="52" height="26" rx="6" ry="6"/>
 <text class="tap" x="26" y="13">TRANS</text>
-</g>
-<g class="combo combo-COMBO_LANG1">
-<polyline points="134,90.605 186.52,94.245"/>
-<circle class="combo-dot" cx="134" cy="90.605" r="3.2"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<rect class="combo-label-bg" x="137.76" y="69.605" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="160.26" y="77.605">LANG1</text>
-</g>
-<g class="combo combo-COMBO_LANG2">
-<polyline points="186.52,94.245 238,102.045"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<circle class="combo-dot" cx="238" cy="102.045" r="3.2"/>
-<rect class="combo-label-bg" x="189.76" y="73.245" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="212.26" y="81.245">LANG2</text>
 </g>
 </g>
 <g class="layer layer-num_layer" transform="translate(0 793.21)">
@@ -790,20 +758,6 @@ svg.physical-layout { font-family: ui-monospace, SFMono-Regular, Consolas, monos
 <rect x="0" y="0" width="52" height="26" rx="6" ry="6"/>
 <text class="tap" x="26" y="13">TRANS</text>
 </g>
-<g class="combo combo-COMBO_LANG1">
-<polyline points="134,90.605 186.52,94.245"/>
-<circle class="combo-dot" cx="134" cy="90.605" r="3.2"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<rect class="combo-label-bg" x="137.76" y="69.605" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="160.26" y="77.605">LANG1</text>
-</g>
-<g class="combo combo-COMBO_LANG2">
-<polyline points="186.52,94.245 238,102.045"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<circle class="combo-dot" cx="238" cy="102.045" r="3.2"/>
-<rect class="combo-label-bg" x="189.76" y="73.245" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="212.26" y="81.245">LANG2</text>
-</g>
 </g>
 <g class="layer layer-snipe_layer" transform="translate(0 1189.814)">
 <text class="title" x="30" y="10">Snipe</text>
@@ -1046,20 +1000,6 @@ svg.physical-layout { font-family: ui-monospace, SFMono-Regular, Consolas, monos
 <g class="key keypos-55 transparent" transform="translate(82 272.605) rotate(0 -52 -260)">
 <rect x="0" y="0" width="52" height="26" rx="6" ry="6"/>
 <text class="tap" x="26" y="13">TRANS</text>
-</g>
-<g class="combo combo-COMBO_LANG1">
-<polyline points="134,90.605 186.52,94.245"/>
-<circle class="combo-dot" cx="134" cy="90.605" r="3.2"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<rect class="combo-label-bg" x="137.76" y="69.605" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="160.26" y="77.605">LANG1</text>
-</g>
-<g class="combo combo-COMBO_LANG2">
-<polyline points="186.52,94.245 238,102.045"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<circle class="combo-dot" cx="238" cy="102.045" r="3.2"/>
-<rect class="combo-label-bg" x="189.76" y="73.245" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="212.26" y="81.245">LANG2</text>
 </g>
 </g>
 <g class="layer layer-bt_layer" transform="translate(0 1586.419)">
@@ -1311,20 +1251,6 @@ svg.physical-layout { font-family: ui-monospace, SFMono-Regular, Consolas, monos
 <rect x="0" y="0" width="52" height="26" rx="6" ry="6"/>
 <text class="tap" x="26" y="13">TRANS</text>
 </g>
-<g class="combo combo-COMBO_LANG1">
-<polyline points="134,90.605 186.52,94.245"/>
-<circle class="combo-dot" cx="134" cy="90.605" r="3.2"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<rect class="combo-label-bg" x="137.76" y="69.605" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="160.26" y="77.605">LANG1</text>
-</g>
-<g class="combo combo-COMBO_LANG2">
-<polyline points="186.52,94.245 238,102.045"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<circle class="combo-dot" cx="238" cy="102.045" r="3.2"/>
-<rect class="combo-label-bg" x="189.76" y="73.245" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="212.26" y="81.245">LANG2</text>
-</g>
 </g>
 <g class="layer layer-scroll_layer" transform="translate(0 1983.024)">
 <text class="title" x="30" y="10">SCROLL</text>
@@ -1568,20 +1494,6 @@ svg.physical-layout { font-family: ui-monospace, SFMono-Regular, Consolas, monos
 <rect x="0" y="0" width="52" height="26" rx="6" ry="6"/>
 <text class="tap" x="26" y="13">TRANS</text>
 </g>
-<g class="combo combo-COMBO_LANG1">
-<polyline points="134,90.605 186.52,94.245"/>
-<circle class="combo-dot" cx="134" cy="90.605" r="3.2"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<rect class="combo-label-bg" x="137.76" y="69.605" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="160.26" y="77.605">LANG1</text>
-</g>
-<g class="combo combo-COMBO_LANG2">
-<polyline points="186.52,94.245 238,102.045"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<circle class="combo-dot" cx="238" cy="102.045" r="3.2"/>
-<rect class="combo-label-bg" x="189.76" y="73.245" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="212.26" y="81.245">LANG2</text>
-</g>
 </g>
 <g class="layer layer-SSNIPE_layer" transform="translate(0 2379.629)">
 <text class="title" x="30" y="10">SSNIPE</text>
@@ -1824,20 +1736,6 @@ svg.physical-layout { font-family: ui-monospace, SFMono-Regular, Consolas, monos
 <g class="key keypos-55 transparent" transform="translate(82 272.605) rotate(0 -52 -260)">
 <rect x="0" y="0" width="52" height="26" rx="6" ry="6"/>
 <text class="tap" x="26" y="13">TRANS</text>
-</g>
-<g class="combo combo-COMBO_LANG1">
-<polyline points="134,90.605 186.52,94.245"/>
-<circle class="combo-dot" cx="134" cy="90.605" r="3.2"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<rect class="combo-label-bg" x="137.76" y="69.605" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="160.26" y="77.605">LANG1</text>
-</g>
-<g class="combo combo-COMBO_LANG2">
-<polyline points="186.52,94.245 238,102.045"/>
-<circle class="combo-dot" cx="186.52" cy="94.245" r="3.2"/>
-<circle class="combo-dot" cx="238" cy="102.045" r="3.2"/>
-<rect class="combo-label-bg" x="189.76" y="73.245" width="45" height="16" rx="8" ry="8"/>
-<text class="combo-label" x="212.26" y="81.245">LANG2</text>
 </g>
 </g>
 </svg>
