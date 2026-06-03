@@ -1,0 +1,170 @@
+#ifndef GEACON_POLARIS_PINS_DTSI
+#define GEACON_POLARIS_PINS_DTSI
+
+/*
+ * Central pin assignment table for GeaconPolaris.
+ *
+ * This file keeps physical pin assignments in one place while preserving the
+ * current bus and module layout.
+ */
+
+/* -------------------------------------------------------------------------- */
+/* XIAO connector pins                                                        */
+/* -------------------------------------------------------------------------- */
+
+/* D0 / P0.02 / A0 / AIN0 */
+#define P0_02_GPIOS(flags) <&gpio0 2 flags>
+#define P0_02_PSEL(fun) NRF_PSEL(fun, 0, 2)
+#define XIAO_D0_ADC_CHANNEL <&adc 0>
+
+#define BATTERY_CHANNEL XIAO_D0_ADC_CHANNEL
+
+/* D1 / P0.03 / A1 / AIN1 */
+#define P0_03_GPIOS(flags) <&gpio0 3 flags>
+#define P0_03_PSEL(fun) NRF_PSEL(fun, 0, 3)
+#define XIAO_D1_ADC_CHANNEL <&adc 1>
+
+#define MATRIX_COL_0_GPIOS P0_03_GPIOS(GPIO_ACTIVE_LOW)
+
+/* D2 / P0.28 / A2 / AIN4 */
+#define P0_28_GPIOS(flags) <&gpio0 28 flags>
+#define P0_28_PSEL(fun) NRF_PSEL(fun, 0, 28)
+#define XIAO_D2_ADC_CHANNEL <&adc 4>
+
+#define MATRIX_COL_1_GPIOS P0_28_GPIOS(GPIO_ACTIVE_LOW)
+
+/* D3 / P0.29 / A3 / AIN5 */
+#define P0_29_GPIOS(flags) <&gpio0 29 flags>
+#define P0_29_PSEL(fun) NRF_PSEL(fun, 0, 29)
+#define XIAO_D3_ADC_CHANNEL <&adc 5>
+
+#define MATRIX_COL_2_GPIOS P0_29_GPIOS(GPIO_ACTIVE_LOW)
+
+/* D4 / P0.04 / A4 / AIN2 */
+#define P0_04_GPIOS(flags) <&gpio0 4 flags>
+#define P0_04_PSEL(fun) NRF_PSEL(fun, 0, 4)
+#define XIAO_D4_ADC_CHANNEL <&adc 2>
+
+#define ANALOG_X_CHANNEL XIAO_D4_ADC_CHANNEL
+#define TB_IRQ_GPIOS P0_04_GPIOS((GPIO_ACTIVE_LOW | GPIO_PULL_UP))
+#define TPD_I2C0_SCL P0_04_PSEL(TWIM_SCL)
+#define IQS_I2C0_SDA P0_04_PSEL(TWIM_SDA)
+
+/* D5 / P0.05 / A5 / AIN3 */
+#define P0_05_GPIOS(flags) <&gpio0 5 flags>
+#define P0_05_PSEL(fun) NRF_PSEL(fun, 0, 5)
+#define XIAO_D5_ADC_CHANNEL <&adc 3>
+
+#define ANALOG_Y_CHANNEL XIAO_D5_ADC_CHANNEL
+#define TB_SPI_MOSI P0_05_PSEL(SPIM_MOSI)
+#define TB_SPI_MISO P0_05_PSEL(SPIM_MISO)
+#define TPD_I2C0_SDA P0_05_PSEL(TWIM_SDA)
+
+/* D6 / P1.11 / TX */
+#define P1_11_GPIOS(flags) <&gpio1 11 flags>
+#define P1_11_PSEL(fun) NRF_PSEL(fun, 1, 11)
+#define XIAO_D6_GPIOS(flags) <&xiao_d 6 flags>
+
+#define MATRIX_INTERRUPT_GPIOS XIAO_D6_GPIOS(GPIO_ACTIVE_LOW)
+
+/* D7 / P1.12 / RX */
+#define P1_12_GPIOS(flags) <&gpio1 12 flags>
+#define P1_12_PSEL(fun) NRF_PSEL(fun, 1, 12)
+
+#define ENCODER_A_GPIOS P1_12_GPIOS((GPIO_ACTIVE_HIGH | GPIO_PULL_UP))
+#define IQS_IRQ_GPIOS P1_12_GPIOS((GPIO_ACTIVE_LOW | GPIO_PULL_UP))
+#define TB_CS_GPIOS P1_12_GPIOS(GPIO_ACTIVE_LOW)
+
+/* D8 / P1.13 / SCK */
+#define P1_13_GPIOS(flags) <&gpio1 13 flags>
+#define P1_13_PSEL(fun) NRF_PSEL(fun, 1, 13)
+
+#define ENCODER_B_GPIOS P1_13_GPIOS((GPIO_ACTIVE_HIGH | GPIO_PULL_UP))
+#define IQS_I2C0_SCL P1_13_PSEL(TWIM_SCL)
+#define TB_SPI_SCK P1_13_PSEL(SPIM_SCK)
+#define R_TPD_DR_GPIOS P1_13_GPIOS(GPIO_ACTIVE_HIGH)
+
+/* D9 / P1.14 / MISO */
+#define P1_14_GPIOS(flags) <&gpio1 14 flags>
+#define P1_14_PSEL(fun) NRF_PSEL(fun, 1, 14)
+
+#define OLED_I2C1_SDA P1_14_PSEL(TWIM_SDA)
+#define L_TPD_DR_GPIOS P1_14_GPIOS(GPIO_ACTIVE_HIGH)
+
+/* D10 / P1.15 / MOSI */
+#define P1_15_GPIOS(flags) <&gpio1 15 flags>
+#define P1_15_PSEL(fun) NRF_PSEL(fun, 1, 15)
+
+#define OLED_I2C1_SCL P1_15_PSEL(TWIM_SCL)
+
+/* D11 / P0.15 / I2S_SD */
+#define P0_15_GPIOS(flags) <&gpio0 15 flags>
+#define P0_15_PSEL(fun) NRF_PSEL(fun, 0, 15)
+
+#define MATRIX_COL_3_GPIOS P0_15_GPIOS(GPIO_ACTIVE_LOW)
+
+/* D12 / P0.19 / I2S_SCK */
+#define P0_19_GPIOS(flags) <&gpio0 19 flags>
+#define P0_19_PSEL(fun) NRF_PSEL(fun, 0, 19)
+
+#define MATRIX_COL_4_GPIOS P0_19_GPIOS(GPIO_ACTIVE_LOW)
+
+/* D13 / P1.01 / I2S_WS */
+#define P1_01_GPIOS(flags) <&gpio1 1 flags>
+#define P1_01_PSEL(fun) NRF_PSEL(fun, 1, 1)
+
+#define MATRIX_COL_5_GPIOS P1_01_GPIOS(GPIO_ACTIVE_LOW)
+
+/* D14 / P0.09 / RX1 / NFC1 */
+#define P0_09_GPIOS(flags) <&gpio0 9 flags>
+#define P0_09_PSEL(fun) NRF_PSEL(fun, 0, 9)
+
+/* D15 / P0.10 / TX1 / NFC2 */
+#define P0_10_GPIOS(flags) <&gpio0 10 flags>
+#define P0_10_PSEL(fun) NRF_PSEL(fun, 0, 10)
+
+#define DIRECT_KEY_0_GPIOS P0_10_GPIOS((GPIO_ACTIVE_LOW | GPIO_PULL_UP))
+
+/* D16 / P0.31 / BAT / AIN7 */
+#define P0_31_GPIOS(flags) <&gpio0 31 flags>
+#define P0_31_PSEL(fun) NRF_PSEL(fun, 0, 31)
+#define XIAO_D16_ADC_CHANNEL <&adc 7>
+
+#define DIRECT_KEY_1_GPIOS P0_31_GPIOS((GPIO_ACTIVE_LOW | GPIO_PULL_UP))
+
+/* -------------------------------------------------------------------------- */
+/* Other nRF52840 pins                                                        */
+/* -------------------------------------------------------------------------- */
+
+/* P0.06 */
+#define P0_06_GPIOS(flags) <&gpio0 6 flags>
+
+#define LED_BLUE_GPIOS P0_06_GPIOS(GPIO_ACTIVE_LOW)
+
+/* P0.26 */
+#define P0_26_GPIOS(flags) <&gpio0 26 flags>
+
+#define LED_RED_GPIOS P0_26_GPIOS(GPIO_ACTIVE_LOW)
+
+/* P0.30 */
+#define P0_30_GPIOS(flags) <&gpio0 30 flags>
+
+#define LED_GREEN_GPIOS P0_30_GPIOS(GPIO_ACTIVE_LOW)
+
+/* -------------------------------------------------------------------------- */
+/* Aggregate aliases                                                          */
+/* -------------------------------------------------------------------------- */
+
+#define MATRIX_GPIOS \
+	MATRIX_COL_0_GPIOS, \
+	MATRIX_COL_1_GPIOS, \
+	MATRIX_COL_2_GPIOS, \
+	MATRIX_COL_3_GPIOS, \
+	MATRIX_COL_4_GPIOS, \
+	MATRIX_COL_5_GPIOS
+
+#define DIRECT_KEY_GPIOS \
+	DIRECT_KEY_0_GPIOS, \
+	DIRECT_KEY_1_GPIOS
+
+#endif /* GEACON_POLARIS_PINS_DTSI */

@@ -1,3 +1,4 @@
+#include "Polaris_pins.dtsi"
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <physical_layouts.dtsi>
 #include <behaviors/rgbled_widget.dtsi>
@@ -152,13 +153,13 @@
       compatible = "gpio-leds";
       status = "okay";
       led0: led_0 {
-        gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;  // red LED, connected to P0.26
+        gpios = LED_RED_GPIOS;  // red LED, connected to P0.26
       };
       led1: led_1 {
-        gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;  // green LED, connected to P0.30
+        gpios = LED_GREEN_GPIOS;  // green LED, connected to P0.30
       };
       led2: led_2 {
-        gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;  // blue LED, connected to P0.06
+        gpios = LED_BLUE_GPIOS;  // blue LED, connected to P0.06
       };
    };
    
@@ -174,7 +175,7 @@
    };
 
    vbatt: vbatt {
-      io-channels = <&adc 0>;
+      io-channels = BATTERY_CHANNEL;
       power-gpios; // unset
       output-ohms = <470000>;
       full-ohms = <(1000000 + 470000)>;

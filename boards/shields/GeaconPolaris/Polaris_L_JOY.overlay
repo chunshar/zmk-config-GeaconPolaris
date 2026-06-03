@@ -1,3 +1,4 @@
+#include "Polaris_pins.dtsi"
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
@@ -11,7 +12,7 @@
         report-interval-ms = <8>;
         x-ch {
             label = "X Axis";
-            io-channels = <&adc 2>;
+            io-channels = ANALOG_X_CHANNEL;
             mv-mid = <1600>;
             mv-min-max = <1600>;
             mv-deadzone = <88>;
@@ -26,7 +27,7 @@
         };
         y-ch {
             label = "Y Axis";
-            io-channels = <&adc 3>;
+            io-channels = ANALOG_Y_CHANNEL;
             mv-mid = <1600>;
             mv-min-max = <1600>;
             mv-deadzone = <88>;
@@ -64,8 +65,8 @@
 };
 
 &left_encoder {
-    a-gpios = <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    b-gpios = <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    a-gpios = ENCODER_A_GPIOS;
+    b-gpios = ENCODER_B_GPIOS;
     steps = <3>;
     status = "okay";
 };
