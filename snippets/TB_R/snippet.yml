@@ -1,4 +1,0 @@
-name: TB_R
-append:
-  EXTRA_DTC_OVERLAY_FILE: TB_R.overlay
-  EXTRA_CONF_FILE: TB_R.conf

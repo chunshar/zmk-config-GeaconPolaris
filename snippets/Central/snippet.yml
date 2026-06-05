@@ -1,0 +1,4 @@
+name: Central
+append:
+  EXTRA_CONF_FILE: Central.conf
+  DTS_EXTRA_CPPFLAGS: -DPOLARIS_SPLIT_ROLE_CENTRAL

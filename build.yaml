@@ -1,41 +1,15 @@
 ---
 include:
-# Left Shields
+# Unified firmware
   - board: seeeduino_xiao_ble
     shield: Polaris_L_Base rgbled_adapter nice_oled
-    snippet: TB_L zmk-usb-logging studio-rpc-usb-uart
-    artifact-name: Polaris_L_MODULE_TB
-
-  - board: seeeduino_xiao_ble
-    shield: Polaris_L_Base rgbled_adapter nice_oled
-    snippet: JOY zmk-usb-logging studio-rpc-usb-uart
-    artifact-name: Polaris_L_MODULE_JOY
-
-  - board: seeeduino_xiao_ble
-    shield: Polaris_L_Base rgbled_adapter nice_oled
-    snippet: ENC zmk-usb-logging studio-rpc-usb-uart
-    artifact-name: Polaris_L_MODULE_ENC
-
-  - board: seeeduino_xiao_ble
-    shield: Polaris_L_Base rgbled_adapter nice_oled
-    snippet: TPD_L zmk-usb-logging studio-rpc-usb-uart
-    artifact-name: Polaris_L_MODULE_TPD
-
-# Right Shields
-  - board: seeeduino_xiao_ble
-    shield: Polaris_R_Base rgbled_adapter
-    snippet: TB_R zmk-usb-logging studio-rpc-usb-uart
-    artifact-name: Polaris_R_MODULE_TB
+    snippet: Central ModuleMux zmk-usb-logging studio-rpc-usb-uart
+    artifact-name: Polaris_L_UNIFIED
 
   - board: seeeduino_xiao_ble
     shield: Polaris_R_Base rgbled_adapter
-    snippet: TPD_R zmk-usb-logging studio-rpc-usb-uart
-    artifact-name: Polaris_R_MODULE_TPD
-
-  - board: seeeduino_xiao_ble
-    shield: Polaris_R_Base rgbled_adapter
-    snippet: IQS zmk-usb-logging studio-rpc-usb-uart
-    artifact-name: Polaris_R_MODULE_IQS
+    snippet: Peripheral ModuleMux zmk-usb-logging studio-rpc-usb-uart
+    artifact-name: Polaris_R_UNIFIED
 
 # Settings Reset
   - board: seeeduino_xiao_ble

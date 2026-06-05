@@ -1,4 +1,0 @@
-name: ENC
-append:
-  EXTRA_DTC_OVERLAY_FILE: ENC.overlay
-  EXTRA_CONF_FILE: ENC.conf

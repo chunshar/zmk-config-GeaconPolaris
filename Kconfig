@@ -1,0 +1,2 @@
+# GeaconPolaris-specific Kconfig options are currently not required.
+# Runtime input module support is provided by the standalone zmk-input-module.

@@ -1,5 +1,7 @@
 #include "Polaris_pins.dtsi"
+#include <dt-bindings/polaris/module_select.h>
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <dt-bindings/zmk/input_module.h>
 #include <physical_layouts.dtsi>
 #include <behaviors/rgbled_widget.dtsi>
 
@@ -14,7 +16,57 @@
    //    compatible = "zmk,cdc-acm-bootloader-trigger";
    //    cdc-port = <&snippet_zmk_usb_logging_uart>;
    // };
-   
+
+   behaviors {
+      polaris_mod: polaris_module_select {
+         compatible = "zmk,behavior-input-module-select";
+         #binding-cells = <1>;
+         display-name = "Polaris Module Select";
+      };
+   };
+
+   polaris_module_mux: module_mux {
+      compatible = "zmk,input-module-mux";
+      status = "okay";
+      settings-key = "polaris/module";
+      default-profile = <POLARIS_MODULE_UNSPECIFIED>;
+
+      profile_unspecified {
+         profile-id = <POLARIS_MODULE_UNSPECIFIED>;
+         display-name = "UNSPECIFIED";
+      };
+
+      profile_encoder {
+         profile-id = <POLARIS_MODULE_ENC>;
+         display-name = "ENC";
+         capabilities = <ZMK_INPUT_MODULE_CAP_ENCODER>;
+      };
+
+      profile_joystick {
+         profile-id = <POLARIS_MODULE_JOY>;
+         display-name = "JOY";
+         capabilities = <(ZMK_INPUT_MODULE_CAP_ADC | ZMK_INPUT_MODULE_CAP_ENCODER)>;
+      };
+
+      profile_trackball {
+         profile-id = <POLARIS_MODULE_TB>;
+         display-name = "TB";
+         capabilities = <ZMK_INPUT_MODULE_CAP_SPI>;
+      };
+
+      profile_touchpad {
+         profile-id = <POLARIS_MODULE_TPD>;
+         display-name = "TPD";
+         capabilities = <ZMK_INPUT_MODULE_CAP_I2C>;
+      };
+
+      profile_iqs {
+         profile-id = <POLARIS_MODULE_IQS>;
+         display-name = "IQS";
+         capabilities = <ZMK_INPUT_MODULE_CAP_I2C>;
+      };
+   };
+
 	default_transform: keymap_transform_0 {
 		compatible = "zmk,matrix-transform";
 		columns = <12>;

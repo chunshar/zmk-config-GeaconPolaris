@@ -6,14 +6,40 @@ manifest:
       url-base: https://github.com/te9no
     - name: cormoran
       url-base: https://github.com/cormoran
-    - name: ShiniNet
-      url-base: https://github.com/ShiniNet
   projects:
     - name: zmk
       # remote: zmkfirmware
       remote: te9no
       revision: v0.3-branch+dya
-      import: app/west.yml
+      import:
+        file: app/west.yml
+        name-blocklist:
+          - zephyr
+
+    - name: zephyr
+      remote: te9no
+      revision: af6fff80212a92f56c6ca9a3a339ab4957a85334
+      clone-depth: 1
+      import:
+        name-blocklist:
+          - ci-tools
+          - hal_altera
+          - hal_cypress
+          - hal_infineon
+          - hal_microchip
+          - hal_nxp
+          - hal_openisa
+          - hal_silabs
+          - hal_xtensa
+          - hal_st
+          - hal_ti
+          - loramac-node
+          - mcuboot
+          - mcumgr
+          - net-tools
+          - openthread
+          - edtt
+          - trusted-firmware-m
 
 # ZMK RGB LED Widget
     - name: zmk-rgbled-widget
@@ -57,6 +83,12 @@ manifest:
       revision: main
       path: modules/zmk-pmw3610-driver
 
+# Runtime input module profile selection
+    - name: zmk-input-module
+      remote: te9no
+      revision: main
+      path: modules/zmk-input-module
+
 # OLED
     - name: zmk-nice-oled
       # remote: mctechnology17
@@ -99,4 +131,3 @@ manifest:
     #   path: modules/zmk-feature-cdc-acm-bootloader-trigger
   self:
     path: config
-

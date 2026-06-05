@@ -1,0 +1,4 @@
+name: Peripheral
+append:
+  EXTRA_CONF_FILE: Peripheral.conf
+  DTS_EXTRA_CPPFLAGS: -DPOLARIS_SPLIT_ROLE_PERIPHERAL
