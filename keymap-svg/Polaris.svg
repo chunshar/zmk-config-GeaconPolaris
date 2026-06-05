@@ -1135,45 +1135,54 @@ svg.physical-layout { font-family: ui-monospace, SFMono-Regular, Consolas, monos
 <rect x="0" y="0" width="52" height="52" rx="6" ry="6"/>
 <text class="tap" x="26" y="26">TRANS</text>
 </g>
-<g class="key keypos-12 transparent" transform="translate(30 116.605) rotate(0 0 -104)">
+<g class="key keypos-12 " transform="translate(30 116.605) rotate(0 0 -104)">
 <rect x="0" y="0" width="91" height="52" rx="6" ry="6"/>
-<text class="tap" x="45.5" y="26">TRANS</text>
+<text class="tap" x="45.5" y="20">POLARIS_MODULE_ENC</text>
+<text class="hold" x="45.5" y="37">polaris_mod</text>
 </g>
-<g class="key keypos-13 transparent" transform="translate(121 117.125) rotate(2.5 26 26)">
+<g class="key keypos-13 " transform="translate(121 117.125) rotate(2.5 26 26)">
 <rect x="0" y="0" width="52" height="52" rx="6" ry="6"/>
-<text class="tap" x="26" y="26">TRANS</text>
+<text class="tap" x="26" y="20">POLARIS_MODULE_JOY</text>
+<text class="hold" x="26" y="37">polaris_mod</text>
 </g>
-<g class="key keypos-14 transparent" transform="translate(173.52 121.805) rotate(7.5 26 26)">
+<g class="key keypos-14 " transform="translate(173.52 121.805) rotate(7.5 26 26)">
 <rect x="0" y="0" width="52" height="52" rx="6" ry="6"/>
-<text class="tap" x="26" y="26">TRANS</text>
+<text class="tap" x="26" y="20">POLARIS_MODULE_TB</text>
+<text class="hold" x="26" y="37">polaris_mod</text>
 </g>
-<g class="key keypos-15 transparent" transform="translate(225 130.645) rotate(12.5 26 26)">
+<g class="key keypos-15 " transform="translate(225 130.645) rotate(12.5 26 26)">
 <rect x="0" y="0" width="52" height="52" rx="6" ry="6"/>
-<text class="tap" x="26" y="26">TRANS</text>
+<text class="tap" x="26" y="20">POLARIS_MODULE_TPD</text>
+<text class="hold" x="26" y="37">polaris_mod</text>
 </g>
-<g class="key keypos-16 transparent" transform="translate(276.48 140.005) rotate(7.5 26 26)">
+<g class="key keypos-16 " transform="translate(276.48 140.005) rotate(7.5 26 26)">
 <rect x="0" y="0" width="52" height="52" rx="6" ry="6"/>
-<text class="tap" x="26" y="26">TRANS</text>
+<text class="tap" x="26" y="20">POLARIS_MODULE_UNSPECIFIED</text>
+<text class="hold" x="26" y="37">polaris_mod</text>
 </g>
 <g class="key keypos-17 transparent" transform="translate(329 144.685) rotate(2.5 26 26)">
 <rect x="0" y="0" width="52" height="52" rx="6" ry="6"/>
 <text class="tap" x="26" y="26">TRANS</text>
 </g>
-<g class="key keypos-18 transparent" transform="translate(602 144.685) rotate(-2.5 26 26)">
+<g class="key keypos-18 " transform="translate(602 144.685) rotate(-2.5 26 26)">
 <rect x="0" y="0" width="52" height="52" rx="6" ry="6"/>
-<text class="tap" x="26" y="26">TRANS</text>
+<text class="tap" x="26" y="20">POLARIS_MODULE_TB</text>
+<text class="hold" x="26" y="37">polaris_mod</text>
 </g>
-<g class="key keypos-19 transparent" transform="translate(654.52 140.005) rotate(-7.5 26 26)">
+<g class="key keypos-19 " transform="translate(654.52 140.005) rotate(-7.5 26 26)">
 <rect x="0" y="0" width="52" height="52" rx="6" ry="6"/>
-<text class="tap" x="26" y="26">TRANS</text>
+<text class="tap" x="26" y="20">POLARIS_MODULE_TPD</text>
+<text class="hold" x="26" y="37">polaris_mod</text>
 </g>
-<g class="key keypos-20 transparent" transform="translate(706 130.645) rotate(-12.5 26 26)">
+<g class="key keypos-20 " transform="translate(706 130.645) rotate(-12.5 26 26)">
 <rect x="0" y="0" width="52" height="52" rx="6" ry="6"/>
-<text class="tap" x="26" y="26">TRANS</text>
+<text class="tap" x="26" y="20">POLARIS_MODULE_IQS</text>
+<text class="hold" x="26" y="37">polaris_mod</text>
 </g>
-<g class="key keypos-21 transparent" transform="translate(757.48 121.805) rotate(-7.5 26 26)">
+<g class="key keypos-21 " transform="translate(757.48 121.805) rotate(-7.5 26 26)">
 <rect x="0" y="0" width="52" height="52" rx="6" ry="6"/>
-<text class="tap" x="26" y="26">TRANS</text>
+<text class="tap" x="26" y="20">POLARIS_MODULE_UNSPECIFIED</text>
+<text class="hold" x="26" y="37">polaris_mod</text>
 </g>
 <g class="key keypos-22 transparent" transform="translate(810 117.125) rotate(-2.5 26 26)">
 <rect x="0" y="0" width="52" height="52" rx="6" ry="6"/>
