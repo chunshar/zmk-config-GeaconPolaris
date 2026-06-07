@@ -24,9 +24,43 @@
 			low-power-enable;
 		};
 	};
+
+	polaris_tpd_i2c0_default: polaris_tpd_i2c0_default {
+		group1 {
+			psels = <TPD_I2C0_SDA>,
+				<TPD_I2C0_SCL>;
+			bias-pull-up;
+		};
+	};
+
+	polaris_tpd_i2c0_sleep: polaris_tpd_i2c0_sleep {
+		group1 {
+			psels = <TPD_I2C0_SDA>,
+				<TPD_I2C0_SCL>;
+			low-power-enable;
+			bias-pull-up;
+		};
+	};
+
+	polaris_iqs_i2c1_default: polaris_iqs_i2c1_default {
+		group1 {
+			psels = <IQS_I2C_SDA>,
+				<IQS_I2C_SCL>;
+			bias-pull-up;
+		};
+	};
+
+	polaris_iqs_i2c1_sleep: polaris_iqs_i2c1_sleep {
+		group1 {
+			psels = <IQS_I2C_SDA>,
+				<IQS_I2C_SCL>;
+			low-power-enable;
+			bias-pull-up;
+		};
+	};
 };
 
-&spi0 {
+&spi2 {
 	status = "okay";
 	compatible = "nordic,nrf-spim";
 	pinctrl-0 = <&polaris_tb_spi_default>;
@@ -73,7 +107,7 @@
 		compatible = "alps,ec11";
 		a-gpios = ENCODER_A_GPIOS;
 		b-gpios = ENCODER_B_GPIOS;
-		steps = <24>;
+		steps = <96>;
 		status = "okay";
 		zephyr,deferred-init;
 	};
@@ -93,7 +127,7 @@
 		profile_encoder {
 			profile-id = <POLARIS_MODULE_ENC>;
 			sensor = <&left_encoder_enc>;
-			triggers-per-rotation = <10>;
+			triggers-per-rotation = <24>;
 		};
 
 		profile_joystick {
@@ -142,10 +176,19 @@
 		};
 	};
 
+	analog_input_proxy_l: analog_input_proxy_l {
+		compatible = "zmk,input-module-input-proxy";
+
+		profile_joystick {
+			profile-id = <POLARIS_MODULE_JOY>;
+			input = <&anin0>;
+		};
+	};
+
 	analog_input_listener {
 		status = "okay";
 		compatible = "zmk,input-listener";
-		device = <&anin0>;
+		device = <&analog_input_proxy_l>;
 		input-processors = <&joy_scroll_runtime_input_processor_l>;
 	};
 
@@ -178,7 +221,7 @@
 
 	trackball_listener2: trackball_listener2 {
 		compatible = "zmk,input-listener";
-		device = <&trackball2>;
+		device = <&trackball_input_proxy_l>;
 		status = "okay";
 		input-processors = <&module_scroll_runtime_input_processor_l>,
 				   <&zip_xy_to_scroll_mapper>;
@@ -193,7 +236,7 @@
 	glidepoint_listener: glidepoint_listener {
 		compatible = "zmk,input-listener";
 		status = "okay";
-		device = <&glidepoint_L>;
+		device = <&touchpad_input_proxy_l>;
 		input-processors = <&module_scroll_runtime_input_processor_l>;
 	};
 
@@ -241,25 +284,44 @@
 	xy-to-scroll-enabled;
 };
 
-/ {
-	tpd_i2c: tpd_i2c {
-		compatible = "gpio-i2c";
-		status = "okay";
-		clock-frequency = <100000>;
-		sda-gpios = TPD_I2C_SDA_GPIOS;
-		scl-gpios = TPD_I2C_SCL_GPIOS;
-		#address-cells = <1>;
-		#size-cells = <0>;
-		zephyr,deferred-init;
+&i2c0 {
+	status = "okay";
+	compatible = "nordic,nrf-twi";
+	pinctrl-0 = <&polaris_tpd_i2c0_default>;
+	pinctrl-1 = <&polaris_tpd_i2c0_sleep>;
+	pinctrl-names = "default", "sleep";
+	clock-frequency = <100000>;
+	#address-cells = <1>;
+	#size-cells = <0>;
+	zephyr,deferred-init;
 
-		glidepoint_L: glidepoint_L@2a {
-			compatible = "cirque,pinnacle";
-			reg = <0x2a>;
-			status = "okay";
-			dr-gpios = L_TPD_DR_GPIOS;
-			sensitivity = "2x";
-			no-taps;
-			zephyr,deferred-init;
+	glidepoint_L: glidepoint_L@2a {
+		compatible = "cirque,pinnacle";
+		reg = <0x2a>;
+		status = "okay";
+		dr-gpios = L_TPD_DR_GPIOS;
+		sensitivity = "2x";
+		no-taps;
+		zephyr,deferred-init;
+	};
+};
+
+/ {
+	trackball_input_proxy_l: trackball_input_proxy_l {
+		compatible = "zmk,input-module-input-proxy";
+
+		profile_trackball {
+			profile-id = <POLARIS_MODULE_TB>;
+			input = <&trackball2>;
+		};
+	};
+
+	touchpad_input_proxy_l: touchpad_input_proxy_l {
+		compatible = "zmk,input-module-input-proxy";
+
+		profile_touchpad {
+			profile-id = <POLARIS_MODULE_TPD>;
+			input = <&glidepoint_L>;
 		};
 	};
 };
@@ -279,11 +341,11 @@
 	};
 
 	profile_trackball {
-		devices = <&spi0 &trackball2>;
+		devices = <&spi2 &trackball2>;
 	};
 
 	profile_touchpad {
-		devices = <&tpd_i2c &glidepoint_L>;
+		devices = <&i2c0 &glidepoint_L>;
 	};
 };
 #endif
@@ -297,21 +359,21 @@
 		trackball_split: trackball_split@0 {
 			compatible = "zmk,input-split";
 			status = "okay";
-			device = <&trackball>;
+			device = <&trackball_input_proxy_r>;
 			reg = <0>;
 		};
 
 		trackpad_split: trackpad_split@3 {
 			compatible = "zmk,input-split";
 			status = "okay";
-			device = <&iqs9151>;
+			device = <&iqs_input_proxy_r>;
 			reg = <3>;
 		};
 
 		tpd_split: tpd_split@4 {
 			compatible = "zmk,input-split";
 			status = "okay";
-			device = <&glidepoint_R>;
+			device = <&touchpad_input_proxy_r>;
 			reg = <4>;
 		};
 	};
@@ -365,61 +427,88 @@
 	};
 };
 
-/ {
-	tpd_i2c: tpd_i2c {
-		compatible = "gpio-i2c";
-		status = "okay";
-		clock-frequency = <100000>;
-		sda-gpios = TPD_I2C_SDA_GPIOS;
-		scl-gpios = TPD_I2C_SCL_GPIOS;
-		#address-cells = <1>;
-		#size-cells = <0>;
-		zephyr,deferred-init;
+&i2c0 {
+	status = "okay";
+	compatible = "nordic,nrf-twi";
+	pinctrl-0 = <&polaris_tpd_i2c0_default>;
+	pinctrl-1 = <&polaris_tpd_i2c0_sleep>;
+	pinctrl-names = "default", "sleep";
+	clock-frequency = <100000>;
+	#address-cells = <1>;
+	#size-cells = <0>;
+	zephyr,deferred-init;
 
-		glidepoint_R: glidepoint_R@2a {
-			compatible = "cirque,pinnacle";
-			reg = <0x2a>;
-			status = "okay";
-			dr-gpios = R_TPD_DR_GPIOS;
-			sensitivity = "2x";
-			no-taps;
-			zephyr,deferred-init;
-		};
+	glidepoint_R: glidepoint_R@2a {
+		compatible = "cirque,pinnacle";
+		reg = <0x2a>;
+		status = "okay";
+		dr-gpios = R_TPD_DR_GPIOS;
+		sensitivity = "2x";
+		no-taps;
+		zephyr,deferred-init;
+	};
+};
+
+&i2c1 {
+	status = "okay";
+	compatible = "nordic,nrf-twi";
+	pinctrl-0 = <&polaris_iqs_i2c1_default>;
+	pinctrl-1 = <&polaris_iqs_i2c1_sleep>;
+	pinctrl-names = "default", "sleep";
+	clock-frequency = <100000>;
+	#address-cells = <1>;
+	#size-cells = <0>;
+	zephyr,deferred-init;
+
+	iqs9151: iqs9151@56 {
+		compatible = "azoteq,iqs9151";
+		reg = <0x56>;
+		status = "okay";
+		irq-gpios = IQS_IRQ_GPIOS;
+		zephyr,deferred-init;
 	};
 };
 
 / {
-	iqs_i2c: iqs_i2c {
-		compatible = "gpio-i2c";
-		status = "okay";
-		clock-frequency = <100000>;
-		sda-gpios = IQS_I2C_SDA_GPIOS;
-		scl-gpios = IQS_I2C_SCL_GPIOS;
-		#address-cells = <1>;
-		#size-cells = <0>;
-		zephyr,deferred-init;
+	trackball_input_proxy_r: trackball_input_proxy_r {
+		compatible = "zmk,input-module-input-proxy";
 
-		iqs9151: iqs9151@56 {
-			compatible = "azoteq,iqs9151";
-			reg = <0x56>;
-			status = "okay";
-			irq-gpios = IQS_IRQ_GPIOS;
-			zephyr,deferred-init;
+		profile_trackball {
+			profile-id = <POLARIS_MODULE_TB>;
+			input = <&trackball>;
+		};
+	};
+
+	touchpad_input_proxy_r: touchpad_input_proxy_r {
+		compatible = "zmk,input-module-input-proxy";
+
+		profile_touchpad {
+			profile-id = <POLARIS_MODULE_TPD>;
+			input = <&glidepoint_R>;
+		};
+	};
+
+	iqs_input_proxy_r: iqs_input_proxy_r {
+		compatible = "zmk,input-module-input-proxy";
+
+		profile_iqs {
+			profile-id = <POLARIS_MODULE_IQS>;
+			input = <&iqs9151>;
 		};
 	};
 };
 
 &polaris_module_mux {
 	profile_trackball {
-		devices = <&spi0 &trackball>;
+		devices = <&spi2 &trackball>;
 	};
 
 	profile_touchpad {
-		devices = <&tpd_i2c &glidepoint_R>;
+		devices = <&i2c0 &glidepoint_R>;
 	};
 
 	profile_iqs {
-		devices = <&iqs_i2c &iqs9151>;
+		devices = <&i2c1 &iqs9151>;
 	};
 };
 #endif

@@ -51,16 +51,16 @@ The base shields stay stable. The candidate devices for each module are compiled
 | --- | --- | --- |
 | `POLARIS_MODULE_ENC` | EC11 encoder | Left-side rotary encoder candidate. |
 | `POLARIS_MODULE_JOY` | Analog input + EC11 encoder | Left-side joystick candidate with encoder route. |
-| `POLARIS_MODULE_TB` | SPI + PMW3610 | Left-side trackball candidate. |
-| `POLARIS_MODULE_TPD` | `gpio-i2c` + Cirque Pinnacle | Left-side touchpad candidate. |
+| `POLARIS_MODULE_TB` | `spi2` + PMW3610 | Left-side trackball candidate. |
+| `POLARIS_MODULE_TPD` | hardware `i2c0` + Cirque Pinnacle | Left-side touchpad candidate. |
 
 ### Right-Hand Modules
 
 | Profile | Hardware path | Notes |
 | --- | --- | --- |
-| `POLARIS_MODULE_TB` | SPI + PMW3610 | Right-side trackball candidate. |
-| `POLARIS_MODULE_TPD` | `gpio-i2c` + Cirque Pinnacle | Right-side touchpad candidate. |
-| `POLARIS_MODULE_IQS` | `gpio-i2c` + IQS9151 | Right-side IQS candidate. IQS is exclusive on Polaris, not an optional companion module. |
+| `POLARIS_MODULE_TB` | `spi2` + PMW3610 | Right-side trackball candidate. |
+| `POLARIS_MODULE_TPD` | hardware `i2c0` + Cirque Pinnacle | Right-side touchpad candidate. |
+| `POLARIS_MODULE_IQS` | hardware `i2c1` + IQS9151 | Right-side IQS candidate. IQS is exclusive on Polaris, not an optional companion module. Polaris IQS pins are SDA=D4/P0.04, SCL=D8/P1.13, DR=D7/P1.12. |
 
 Left and right profiles are stored separately on each MCU. Select the desired module profile from the physical half that owns the module, then reboot that half for the selected deferred device path to be initialized.
 
@@ -232,6 +232,8 @@ The output is written to [`keymap-svg/Polaris.svg`](keymap-svg/Polaris.svg) and 
 | `snippets/Peripheral/` | Peripheral-half role snippet for unified firmware and right-side IQS Kconfig. |
 | `snippets/ModuleMux/` | Unified module candidate graph for `ENC`, `JOY`, `TB`, `TPD`, and right-side `IQS`. |
 | `include/dt-bindings/polaris/module_select.h` | Polaris-specific module profile IDs. |
+| `docs/module-mux.md` | ModuleMux profile, deferred-init strategy, and remaining hardware checks. |
+| `docs/boot-diagnostics.md` | Boot failure diagnostic record, root cause summary, cleanup notes, and remaining checks. |
 | `CMakeLists.txt`, `Kconfig`, `zephyr/module.yml` | Minimal Zephyr module metadata so local headers, DTS bindings, boards, and snippets are discoverable. |
 | `build.yaml` | ZMK build matrix. |
 | `.github/workflows/build.yml` | Firmware build, artifact upload, and firmware publish workflow. |
@@ -321,16 +323,16 @@ Polaris の特徴は、左右の base と入力モジュールを分けて扱っ
 | --- | --- | --- |
 | `POLARIS_MODULE_ENC` | EC11 encoder | 左手側ロータリーエンコーダー候補。 |
 | `POLARIS_MODULE_JOY` | Analog input + EC11 encoder | 左手側ジョイスティック候補。encoder route も含む。 |
-| `POLARIS_MODULE_TB` | SPI + PMW3610 | 左手側トラックボール候補。 |
-| `POLARIS_MODULE_TPD` | `gpio-i2c` + Cirque Pinnacle | 左手側タッチパッド候補。 |
+| `POLARIS_MODULE_TB` | `spi2` + PMW3610 | 左手側トラックボール候補。 |
+| `POLARIS_MODULE_TPD` | hardware `i2c0` + Cirque Pinnacle | 左手側タッチパッド候補。 |
 
 ### 右手側モジュール
 
 | Profile | 入力経路 | 説明 |
 | --- | --- | --- |
-| `POLARIS_MODULE_TB` | SPI + PMW3610 | 右手側トラックボール候補。 |
-| `POLARIS_MODULE_TPD` | `gpio-i2c` + Cirque Pinnacle | 右手側タッチパッド候補。 |
-| `POLARIS_MODULE_IQS` | `gpio-i2c` + IQS9151 | 右手側 IQS 候補。Polaris では IQS は optional companion ではなく、右手側の排他モジュールです。 |
+| `POLARIS_MODULE_TB` | `spi2` + PMW3610 | 右手側トラックボール候補。 |
+| `POLARIS_MODULE_TPD` | hardware `i2c0` + Cirque Pinnacle | 右手側タッチパッド候補。 |
+| `POLARIS_MODULE_IQS` | hardware `i2c1` + IQS9151 | 右手側 IQS 候補。Polaris では IQS は optional companion ではなく、右手側の排他モジュールです。Polaris IQS の pin は SDA=D4/P0.04、SCL=D8/P1.13、DR=D7/P1.12 です。 |
 
 左右の profile は、それぞれの MCU の settings に保存されます。左側 module を変えるときは左側の profile selection key を押し、右側 module を変えるときは右側の profile selection key を押します。
 
@@ -454,7 +456,7 @@ Polaris は、キーボードを「キーだけの装置」として閉じませ
 ## TODO / 確認事項
 
 - モジュールの物理的な交換方式を記述する。
-- `IQS` Snippet の具体的なセンサー/入力デバイスを確認する。
+- IQS9151 の実機 gesture / sensitivity 設定を詰める。
 - 電源、電池、充電、稼働時間に関する記述を確認する。
 - `layout_shift.dtsi` の具体的な使い方を例付きで説明する。
 - `SNIPE`, `SCROLL`, `SSNIPE` の意図をユーザー視点で補足する。

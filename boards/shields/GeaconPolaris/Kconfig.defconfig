@@ -1,5 +1,7 @@
-config ZMK_SPLIT
-    default y
+if SHIELD_Polaris_L_Base || SHIELD_Polaris_R_Base
+    config ZMK_SPLIT
+        default y
+endif
 
 if SHIELD_Polaris_L_Base
     config ZMK_KEYBOARD_NAME

@@ -18,7 +18,7 @@
    // };
 
    behaviors {
-      polaris_mod: polaris_module_select {
+      pmod: pmod {
          compatible = "zmk,behavior-input-module-select";
          #binding-cells = <1>;
          display-name = "Polaris Module Select";

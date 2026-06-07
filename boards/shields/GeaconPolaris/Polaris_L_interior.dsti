@@ -1,5 +1,6 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
+#include <dt-bindings/zmk/zip_dynamic_scale.h>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <dt-bindings/zmk/keys.h>
 #include <input/processors/runtime-input-processor.dtsi>
@@ -84,15 +85,37 @@
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
                            <&mouse_runtime_input_processor>,
                            <&zip_xy_scaler 1 5>,
-                           <&zip_scroll_scaler 1 50>;
+                           <&zip_scroll_scaler 1 20>,
+                           <&zip_dynamic_xy_scaler>,
+                           <&zip_dynamic_scroll_scaler>;
 
         lowspeedmode {
             layers = <1>, <2>;
             input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
                                <&mouse_runtime_input_processor>,
                                <&zip_xy_scaler 1 12>,
-                               <&zip_scroll_scaler 1 70>;
+                               <&zip_scroll_scaler 1 35>,
+                               <&zip_dynamic_xy_scaler>,
+                               <&zip_dynamic_scroll_scaler>;
         };
+    };
+
+    zip_dynamic_xy_scaler: zip_dynamic_xy_scaler {
+        compatible = "zmk,input-processor-dynamic-scaler";
+        #input-processor-cells = <0>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_X INPUT_REL_Y>;
+        scale-group = <ZDS_XY>;
+        track-remainders;
+    };
+
+    zip_dynamic_scroll_scaler: zip_dynamic_scroll_scaler {
+        compatible = "zmk,input-processor-dynamic-scaler";
+        #input-processor-cells = <0>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
+        scale-group = <ZDS_SC>;
+        track-remainders;
     };
     
 	scroll_runtime_input_processor_r: scroll_runtime_input_processor_r {

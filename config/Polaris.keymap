@@ -88,7 +88,7 @@
 &mo SCROLL    &mo SSNIPE
             >;
 
-            sensor-bindings = <&rsr_msch>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         function_layer {
@@ -137,7 +137,7 @@
             label = "BT";
             bindings = <
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4          &bt BT_CLR_ALL  &trans  &trans  &trans  &trans  &trans
-&polaris_mod POLARIS_MODULE_ENC  &polaris_mod POLARIS_MODULE_JOY  &polaris_mod POLARIS_MODULE_TB  &polaris_mod POLARIS_MODULE_TPD  &polaris_mod POLARIS_MODULE_UNSPECIFIED  &trans                &polaris_mod POLARIS_MODULE_TB  &polaris_mod POLARIS_MODULE_TPD  &polaris_mod POLARIS_MODULE_IQS  &polaris_mod POLARIS_MODULE_UNSPECIFIED  &trans  &trans
+&trans      &pmod POLARIS_MODULE_ENC  &pmod POLARIS_MODULE_JOY  &pmod POLARIS_MODULE_TB  &pmod POLARIS_MODULE_TPD  &pmod POLARIS_MODULE_UNSPECIFIED                  &pmod POLARIS_MODULE_TB  &pmod POLARIS_MODULE_TPD  &pmod POLARIS_MODULE_IQS  &pmod POLARIS_MODULE_UNSPECIFIED  &trans  &trans
 &trans      &trans        &trans        &trans        &trans        &trans                &trans          &trans  &trans  &trans  &trans
 &trans      &trans        &trans                      &trans        &trans                &trans          &trans  &trans  &trans  &trans  &trans
 &kp LEFT    &kp UP        &kp SPACE     &kp DOWN      &kp RIGHT                           &trans          &trans  &trans
