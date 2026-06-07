@@ -10,7 +10,7 @@ manifest:
     - name: zmk
       # remote: zmkfirmware
       remote: te9no
-      revision: v0.3-branch+dya
+      revision: codex/polaris-zmk-input-module-mux
       import:
         file: app/west.yml
         name-blocklist:
