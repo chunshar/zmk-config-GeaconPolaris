@@ -1,0 +1,13 @@
+{
+  "repository": "te9no/zmk-config-GeaconPolaris",
+  "branch": "feat/right-central-central-battery-oled",
+  "target": "all",
+  "status": "passing",
+  "raw_status": "success",
+  "color": "#2ea44f",
+  "sha": "4638715c70a851d52a993fa7500c1eb136d0e4a1",
+  "run_id": "27855921248",
+  "run_number": "147",
+  "run_url": "https://github.com/te9no/zmk-config-GeaconPolaris/actions/runs/27855921248",
+  "generated_at": "2026-06-20T01:28:20Z"
+}
