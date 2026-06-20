@@ -1,15 +1,21 @@
 config ZMK_SPLIT
     default y
 
-if SHIELD_Polaris_L_Base
+if SHIELD_Polaris_L_Base || SHIELD_Polaris_R_Base
     config ZMK_KEYBOARD_NAME
         default "GeaconPolaris"
+endif
+
+if SHIELD_Polaris_R_Base
 
     config ZMK_SPLIT_ROLE_CENTRAL
         default y
 
     config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
         default 1
+endif
+
+if SHIELD_Polaris_L_Base
 
     if ZMK_DISPLAY
         config I2C

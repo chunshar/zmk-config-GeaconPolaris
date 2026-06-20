@@ -4,22 +4,39 @@
 #include <input/processors/runtime-input-processor.dtsi>
 
 / {
-    split_inputs {
-        #address-cells = <1>;
-        #size-cells = <0>;
-
-        trackball_split: trackball_split@0 {
-            compatible = "zmk,input-split";
-            status = "okay";
-            device = <&trackball>;
-            reg = <0>;
-        };
-    };
-
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         status = "okay";
-        device = <&trackball_split>;
+        device = <&trackball>;
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                           <&mouse_runtime_input_processor>;
+
+        scroll {
+            layers = <1>;
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                               <&right_trackball_scroll_runtime>;
+            process-next;
+        };
+
+        arrow {
+            layers = <2>;
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                               <&mouse_runtime_input_processor>,
+                               <&zip_keybind_keys>;
+            process-next;
+        };
+
+        arrow-prevent-move {
+            layers = <2>;
+            input-processors = <&zip_xy_scaler 0 1>;
+        };
+
+        snipe {
+            layers = <3>;
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                               <&mouse_runtime_input_processor>,
+                               <&zip_xy_scaler 1 3>;
+        };
     };
 };
 

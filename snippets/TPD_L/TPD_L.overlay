@@ -2,20 +2,16 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    glidepoint_listener: glidepoint_listener {
-        compatible = "zmk,input-listener";
-        status = "okay";
-        device = <&glidepoint_L>;
-        input-processors = <&scroll_runtime_input_processor_l>;
-    };
+    split_inputs {
+        #address-cells = <1>;
+        #size-cells = <0>;
 
-    scroll_runtime_input_processor_l: scroll_runtime_input_processor_l {
-        compatible = "zmk,input-processor-runtime";
-        processor-label = "ScrL";
-        type = <INPUT_EV_REL>;
-        track-remainders;
-        scale-divisor = <60>;
-        #input-processor-cells = <0>;
+        trackpad_split: trackpad_split@3 {
+            compatible = "zmk,input-split";
+            status = "okay";
+            device = <&glidepoint_L>;
+            reg = <3>;
+        };
     };
 };
 
@@ -54,10 +50,4 @@
         sensitivity = "2x";
         no-taps;
     };
-};
-
-&scroll_runtime_input_processor_l {
-    x-codes = <INPUT_REL_X>;
-    y-codes = <INPUT_REL_Y>;
-    xy-to-scroll-enabled;
 };

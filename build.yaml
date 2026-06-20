@@ -3,22 +3,22 @@ include:
 # Left Shields
   - board: seeeduino_xiao_ble
     shield: Polaris_L_Base rgbled_adapter nice_oled
-    snippet: TB_L zmk-usb-logging studio-rpc-usb-uart
+    snippet: TB_L
     artifact-name: Polaris_L_MODULE_TB
 
   - board: seeeduino_xiao_ble
     shield: Polaris_L_Base rgbled_adapter nice_oled
-    snippet: JOY zmk-usb-logging studio-rpc-usb-uart
+    snippet: JOY
     artifact-name: Polaris_L_MODULE_JOY
 
   - board: seeeduino_xiao_ble
     shield: Polaris_L_Base rgbled_adapter nice_oled
-    snippet: ENC zmk-usb-logging studio-rpc-usb-uart
+    snippet: ENC
     artifact-name: Polaris_L_MODULE_ENC
 
   - board: seeeduino_xiao_ble
     shield: Polaris_L_Base rgbled_adapter nice_oled
-    snippet: TPD_L zmk-usb-logging studio-rpc-usb-uart
+    snippet: TPD_L
     artifact-name: Polaris_L_MODULE_TPD
 
 # Right Shields

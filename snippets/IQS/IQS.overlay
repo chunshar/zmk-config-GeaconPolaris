@@ -34,21 +34,23 @@
 };
 
 / {
-    split_inputs {
-        #address-cells = <1>;
-        #size-cells = <0>;
-
-        iqs_split: iqs_split@4 {
-            compatible = "zmk,input-split";
-            status = "okay";
-            device = <&iqs9151>;
-            reg = <4>;
-        };
-    };
-
     iqs_listener: iqs_listener {
         compatible = "zmk,input-listener";
         status = "okay";
-        device = <&iqs_split>;
+        device = <&iqs9151>;
+        input-processors = <&zip_xy_transform INPUT_TRANSFORM_X_INVERT>,
+                           <&zip_xy_scaler 1 12>,
+                           <&zip_scroll_scaler 1 40>,
+                           <&iqs_dynamic_xy_scaler>,
+                           <&iqs_dynamic_scroll_scaler>;
+
+        lowspeedmode {
+            layers = <1>, <2>;
+            input-processors = <&zip_xy_transform INPUT_TRANSFORM_X_INVERT>,
+                               <&zip_xy_scaler 1 24>,
+                               <&zip_scroll_scaler 1 60>,
+                               <&iqs_dynamic_xy_scaler>,
+                               <&iqs_dynamic_scroll_scaler>;
+        };
     };
 };

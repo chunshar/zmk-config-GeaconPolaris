@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include "Polaris.dtsi"
+#include "Polaris_R_central_inputs.dtsi"
 
 / {
     kscan0: kscan0 {

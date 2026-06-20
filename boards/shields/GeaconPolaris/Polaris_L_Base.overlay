@@ -1,6 +1,4 @@
 #include "Polaris.dtsi"
-#include "Polaris_L_interior.dtsi"
-#include <input/processors/runtime-input-processor.dtsi>
 
 / {
     chosen {
