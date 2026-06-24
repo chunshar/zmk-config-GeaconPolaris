@@ -1,13 +1,13 @@
 {
-  "repository": "te9no/zmk-config-GeaconPolaris",
+  "repository": "chunshar/zmk-config-GeaconPolaris",
   "branch": "main",
   "target": "all",
   "status": "passing",
   "raw_status": "success",
   "color": "#2ea44f",
-  "sha": "685fc7989cca0b0deb8bf0773e01b0a033c3ed57",
-  "run_id": "28057936279",
-  "run_number": "153",
-  "run_url": "https://github.com/te9no/zmk-config-GeaconPolaris/actions/runs/28057936279",
-  "generated_at": "2026-06-23T21:27:21Z"
+  "sha": "4a05f6a4d1d3fd8ec979f5c2201096864c4d0281",
+  "run_id": "28083825290",
+  "run_number": "1",
+  "run_url": "https://github.com/chunshar/zmk-config-GeaconPolaris/actions/runs/28083825290",
+  "generated_at": "2026-06-24T08:03:10Z"
 }
